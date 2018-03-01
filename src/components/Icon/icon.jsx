@@ -1,6 +1,7 @@
 import {addPropTypesTo_} from "utils/addTo_"
 import patchClassName from "HOCs/patchClassName"
 import attachClassName from "HOCs/attachClassName"
+import removePropsIf from "HOCs/removePropsIf"
 import createPropTypesBy from "utils/createPropTypesBy"
 import kebabCase from "lodash/fp/kebabCase"
 
@@ -27,6 +28,9 @@ export default r.pipe(
     className: "string",
     style: "object",
   }),
+  removePropsIf({
+    list: size.concat(iconNames),
+  }),
   attachClassName(baseClassName),
   patchClassName({
     list: iconNames,
@@ -40,6 +44,6 @@ export default r.pipe(
     transformer: r.pipe(
       r.reverse,
       r.concat(`${baseClassName}-`),
-    ),  
-  })
+    ), 
+  }),
 )(Icon)

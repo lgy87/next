@@ -1,5 +1,6 @@
 import {addPropTypesTo_} from "utils/addTo_"
 import patchClassName from "HOCs/patchClassName"
+import removePropsIf from "HOCs/removePropsIf"
 import attachClassName from "HOCs/attachClassName"
 import createPropTypesBy from "utils/createPropTypesBy"
 
@@ -18,6 +19,9 @@ export default r.pipe(
     children: "node",
     className: "string",
     style: "object",
+  }),
+  removePropsIf({
+    list: appearance,
   }),
   attachClassName(baseClassName),
   patchClassName({

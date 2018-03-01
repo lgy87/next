@@ -7,15 +7,15 @@
   </ButtonGroup>
   <br />
   <ButtonGroup>
-    <Button>first</Button>
-    <Button>second</Button>
-    <Button>third</Button>
+    <Button primary>first</Button>
+    <Button success>second</Button>
+    <Button error>third</Button>
   </ButtonGroup>
   <br />
   <ButtonGroup>
-    <Button lg>first</Button>
-    <Button lg>second</Button>
-    <Button lg>third</Button>
+    <Button primary lg>first</Button>
+    <Button success lg>second</Button>
+    <Button error lg>third</Button>
   </ButtonGroup>
 </>
 ```
