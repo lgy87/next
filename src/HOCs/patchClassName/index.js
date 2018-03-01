@@ -16,9 +16,8 @@ function patchClassName ({
       props.className,
       classList.map(transformer)
     )
-    const newProps = r.omit(classList, props)
 
-    return <Component {...newProps} {...{className}} />
+    return <Component {...props} {...{className}} />
   }
 }
 
