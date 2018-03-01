@@ -14,7 +14,7 @@ module.exports = {
     "spectre.css/dist/spectre.min.css",
     "spectre.css/dist/spectre-icons.min.css"
   ],
-  components: "src/components/**/index.js",
+  components: "src/components/**/*.jsx",
   webpackConfig: {
     module: {
       rules: [
@@ -43,6 +43,7 @@ module.exports = {
       ],
     },
     context: SRC,
+    devtool: "eval",
     resolve: {
       modules: [
         SRC,
