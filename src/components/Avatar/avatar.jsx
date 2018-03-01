@@ -7,9 +7,13 @@ import patchClassName from "HOCs/patchClassName"
 import findInBy from "utils/findInBy"
 
 const status = ["online", "busy", "away", "offline"]
+const size = ["xs", "sm", "lg", "xl"]
+const appearance = ["badge"]
+const baseClassName = "avatar"
+
 const Presence = props => <i {...props} />
 
-const AvataPresence = r.pipe(
+const AvatarPresence = r.pipe(
   addPropTypesTo_({
     ...createPropTypesBy(
       r.always("bool"),
@@ -27,10 +31,6 @@ const AvataPresence = r.pipe(
     list: status,
   }),
 )(Presence)
-
-const size = ["xs", "sm", "lg", "xl"]
-const appearance = ["badge"]
-const baseClassName = "avatar"
 
 function Avatar ({
   src,
@@ -55,7 +55,7 @@ function Avatar ({
         iconSrc && <img src={iconSrc} className="avatar-icon" alt={iconAlt} />
       }
       {
-        avatarPresenceVisible && <AvataPresence {...statusObj} /> 
+        avatarPresenceVisible && <AvatarPresence {...statusObj} /> 
       }
     </figure>
   )
