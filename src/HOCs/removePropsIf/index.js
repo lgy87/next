@@ -1,11 +1,9 @@
 /*
  * config: {
  *   pred: (...args) => boolean,
- *   list: [],
  * }
  */
 function removePropsIf ({
-  list,
   pred = r.equals(true),
 }, Component) {
   return function (props) {
