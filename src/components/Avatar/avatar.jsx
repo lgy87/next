@@ -5,32 +5,11 @@ import mapPropsIf from "HOCs/mapPropsIf"
 import attachClassName from "HOCs/attachClassName"
 import patchClassName from "HOCs/patchClassName"
 import findInBy from "utils/findInBy"
+import AvatarPresence, {status} from "./avatarPresence"
 
-const status = ["online", "busy", "away", "offline"]
 const size = ["xs", "sm", "lg", "xl"]
 const appearance = ["badge"]
 const baseClassName = "avatar"
-
-const Presence = props => <i {...props} />
-
-const AvatarPresence = r.pipe(
-  addPropTypesTo_({
-    ...createPropTypesBy(
-      r.always("bool"),
-      status,
-    ),
-    className: "string",
-    style: "object",
-  }),  
-  removePropsIf({
-    list: status,
-    pred: r.T,
-  }),
-  attachClassName("avatar-presence"),
-  patchClassName({
-    list: status,
-  }),
-)(Presence)
 
 function Avatar ({
   src,
