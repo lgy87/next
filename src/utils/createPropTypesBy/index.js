@@ -1,18 +1,10 @@
-import _ from "lodash/fp"
-
-const mapKeys = uncap(_.mapKeys)
-const mapValues = uncap(_.mapValues)
+import mapKeys from "utils/lodash/mapKeys"
+import mapValues from "utils/lodash/mapValues"
 
 function createPropTypesBy (typeCreator, array) {
   return array
-    |> _.mapKeys(_.identity)
-    |> _.mapValues(typeCreator)
+    |> mapKeys(_.identity)
+    |> mapValues(typeCreator)
 }
 
 export default r.curry(createPropTypesBy)
-
-function uncap (hof) {
-  return hof.convert({
-    cap: false,
-  })
-}
