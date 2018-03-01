@@ -15,6 +15,9 @@ module.exports = {
     "spectre.css/dist/spectre-icons.min.css"
   ],
   components: "src/components/**/*.jsx",
+  getExampleFilename (componentPath) {
+    return componentPath.replace(/\.jsx?$/, ".md")
+  },
   webpackConfig: {
     module: {
       rules: [
