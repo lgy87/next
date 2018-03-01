@@ -1,10 +1,6 @@
 ```js
 <>
   <Button text="default button" />
-</>
-```
-```jsx
-<>
   <Button primary text="primary button" />
   <Button success text="success button" />
   <Button error text="error button" />
