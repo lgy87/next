@@ -67,3 +67,4 @@ webpack/*manifest.json
 lib.js
 build/
 coverage/
+.vscode/
