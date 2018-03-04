@@ -15,7 +15,7 @@ component
 function addStepItems ({ steps, ...rest }) {
   if (steps?.length) {
     return {
-      children: steps.map((step, index) => <StepItem { ...step } key={ index } />),
+      children: steps.map((step, index) => <StepItem { ...step } key={ step.id || index } />),
     }
   }
 }

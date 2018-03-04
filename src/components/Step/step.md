@@ -12,10 +12,10 @@
 <>
   <Step
     steps={[
-      {tooltip: "i love u", text: "step 1"},
-      {active: true, tooltip: "i love u", text: "step 2"},
+      {tooltip: "i love u", text: "step 1", id: "2015"},
+      {tooltip: "i love u", text: "step 2"},
       {tooltip: false, text: "step 3"},
-      {tooltip: "i love u", text: "step 4"},
+      {active: true, tooltip: "i love u", text: "step 4"},
     ]}
   />
 </>
