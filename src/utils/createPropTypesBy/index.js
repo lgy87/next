@@ -3,7 +3,7 @@ import mapValues from "utils/lodash/mapValues"
 
 function createPropTypesBy (typeCreator, array) {
   return array
-    |> mapKeys(_.identity)
+    |> mapKeys(r.identity)
     |> mapValues(typeCreator)
 }
 
