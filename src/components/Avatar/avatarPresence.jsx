@@ -1,28 +1,28 @@
-import {addPropTypesTo_} from "utils/addTo_"
 import createPropTypesBy from "utils/createPropTypesBy"
-import removePropsIf from "HOCs/removePropsIf"
-import attachClassName from "HOCs/attachClassName"
-import patchClassName from "HOCs/patchClassName"
+import component from "utils/component"
+import propTypes from "utils/propTypes"
+import concatToClassNameIfAllPropsTrue from "utils/concatToClassNameIfAllPropsTrue"
 
 export const status = ["online", "busy", "away", "offline"]
 
-const AvatarPresence = props => <i {...props} />
-
-export default r.pipe(
-  addPropTypesTo_({
+export default
+component
+  .of("i")
+  .omitProps(status)
+  .withProps(
+    concatToClassNameIfAllPropsTrue(
+      r.identity,
+      status,
+    )
+  )
+  .withProps({ className: "avatar-presence" })
+  .setDisplayName("AvatarPresence")
+  .setPropTypes(propTypes({
     ...createPropTypesBy(
       r.always("bool"),
       status,
     ),
     className: "string",
-    style: "object",
-  }),  
-  removePropsIf({
-    list: status,
-    pred: r.T,
-  }),
-  attachClassName("avatar-presence"),
-  patchClassName({
-    list: status,
-  }),
-)(AvatarPresence)
+    style: "object"
+  }))
+  .init()

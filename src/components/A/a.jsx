@@ -1,16 +1,19 @@
-// const A = props => <span {...props} />
 import component from "utils/component"
 import propTypes from "utils/propTypes"
 import thread from "utils/thread"
+import tooltipMapper from "utils/tooltipMapper"
 
-export default
+const A =
 component
   .of("a")
-  .mapProps(thread(["children", "text"]))
+  .withProps(thread(["children", "text"]))
+  .mapProps(tooltipMapper)
   .defaultProps({ href: "javascript:;" })
+  .setDisplayName("A")
   .setPropTypes(propTypes({
     text: "string",
     href: "string",
   }))
   .init()
 
+export default A

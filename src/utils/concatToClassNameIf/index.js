@@ -1,12 +1,11 @@
-function concatToClassNameIf (klass, pred) {
-  return function ({ className, ...rest }) {
+function concatToClassNameIf (klass, pred, props) {
     return {
-      ...rest,
-      className: cx(className, {
-        [klass]: pred(rest)
-      }),
+      ...props,
+      className: cx(
+        props.className,
+        { [klass]: pred(props) },
+      ),
     }
-  }
 }
 
 export default r.curry(concatToClassNameIf)

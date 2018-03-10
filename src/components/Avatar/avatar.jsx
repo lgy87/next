@@ -1,9 +1,7 @@
-import {addPropTypesTo_} from "utils/addTo_"
+import concatToClassNameIf from "utils/concatToClassNameIf"
+import concatToClassNameIfAllPropsTrue from "utils/concatToClassNameIfAllPropsTrue"
+import propTypes from "utils/propTypes"
 import createPropTypesBy from "utils/createPropTypesBy"
-import removePropsIf from "HOCs/removePropsIf"
-import mapPropsIf from "HOCs/mapPropsIf"
-import attachClassName from "HOCs/attachClassName"
-import patchClassName from "HOCs/patchClassName"
 import findInBy from "utils/findInBy"
 import AvatarPresence, {status} from "./avatarPresence"
 
@@ -41,7 +39,24 @@ function Avatar ({
 }
 
 export default r.pipe(
-  addPropTypesTo_({
+  rc.mapProps(r.omit(size.concat(appearance))),
+  rc.withProps(
+    concatToClassNameIfAllPropsTrue(
+      r.concat(`${baseClassName}-`),
+      size,
+    )
+  ),
+  rc.renameProp("badge", "data-badge"),
+  rc.withProps(
+    concatToClassNameIf(
+      "badge",
+      r.has("badge"),
+    ),
+  ),
+  rc.renameProp("text", "data-initial"),
+  rc.withProps({ "className": baseClassName }),
+  rc.setDisplayName("Avatar"),
+  rc.setPropTypes(propTypes({
     ...createPropTypesBy(
       r.always("bool"),
       size.concat(appearance, status),
@@ -50,40 +65,10 @@ export default r.pipe(
     alt: "string",
     iconSrc: "string",
     iconAlt: "string",
-    badge: ["oneOfType", "string", "number", "bool"],
-    badgeValue: ["oneOfType", "string", "number"],
+    badge: ["oneOfType", "string", "number"],
     text: "string",
     children: "node",
     className: "string",
     style: "object",
-  }),  
-  removePropsIf({
-    list: size.concat(appearance),
-  }),
-  attachClassName(baseClassName),
-  patchClassName({
-    list: size,
-    transformer: r.concat(`${baseClassName}-`),
-  }),
-  patchClassName({
-    list: appearance,
-  }),
-  mapPropsIf({
-    list: ["text"],
-    pred: r.T,
-    transformer: value => ({"data-initial": value})
-  }),
-  mapPropsIf({
-    list: ["badgeValue"],
-    pred: r.T,
-    transformer: value => ({"data-badge": value})
-  }),
-  mapPropsIf({
-    list: ["badge"],
-    pred: r.anyPass([r.is(Number), r.is(String)]),
-    transformer: value => ({
-      badge: true,
-      "data-badge": value,
-    })
-  }),
+  })),
 )(Avatar)

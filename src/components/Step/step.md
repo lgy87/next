@@ -11,12 +11,14 @@
 ```js
 <>
   <Step
-    steps={[
+    items={[
       {tooltip: "i love u", text: "step 1", id: "2015"},
       {tooltip: "i love u", text: "step 2"},
-      {tooltip: false, text: "step 3"},
+      {tooltip: "i am tooltip", text: "step 3"},
       {active: true, tooltip: "i love u", text: "step 4"},
     ]}
-  />
+  >
+    <StepItem tooltip="this is a tooltip" text="children" />
+  </Step>
 </>
 ```

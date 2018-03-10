@@ -1,22 +1,21 @@
-import {addPropTypesTo_} from "utils/addTo_"
-import attachClassName from "HOCs/attachClassName"
+import component from "utils/component"
+import propTypes from "utils/propTypes"
+import thread from "utils/thread"
+
 const baseClassName = "badge"
 
-function Badge ({value, text, children, ...rest}) {
-  return (
-    <span {...rest} data-badge={value}>
-      {text || children}
-    </span>
-  )
-}
-
-export default r.pipe(
-  addPropTypesTo_({
+export default
+component
+  .of("span")
+  .withProps(thread(["children", "text"]))
+  .renameProp("value", "data-badge")
+  .withProps({ className: baseClassName })
+  .setDisplayName("Badge")
+  .setPropTypes(propTypes({
     className: "string",
     style: "object",
     text: "string",
     children: "node",
-    value: "string",
-  }),
-  attachClassName(baseClassName),
-)(Badge)
+    value: ["oneOfType", "string", "number"],
+  }))
+  .init()

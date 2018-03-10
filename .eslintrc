@@ -24,7 +24,8 @@
     "describe": true,
     "it": true,
     "expect": true,
-    "_": true
+    "_": true,
+    "rc": true
   },
   "parser": "babel-eslint",
   "plugins": [

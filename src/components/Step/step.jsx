@@ -12,10 +12,12 @@ component
   }))
   .init()
 
-function addStepItems ({ steps, ...rest }) {
-  if (steps?.length) {
+function addStepItems ({ items, children, ...rest }) {
+  if (items?.length) {
     return {
-      children: steps.map((step, index) => <StepItem { ...step } key={ step.id || index } />),
+      children: items.map(
+        (item, index) => <StepItem { ...item } { ...rest } key={ item.id || index } />
+      ),
     }
   }
 }

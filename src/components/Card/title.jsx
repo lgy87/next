@@ -4,29 +4,28 @@ import propTypes from "utils/propTypes"
 import createPropTypesBy from "utils/createPropTypesBy"
 import thread from "utils/thread"
 
-const appearance = ["primary", "secondary", "success", "warning", "error", "rounded"]
-const baseClassName = "label"
+const headerLevels = 
+  r.range(1, 7)
+  |> r.map(String)
+  |> r.map(r.concat("h"))
 
 export default
 component
-  .of("span")
-  .omitProps(appearance)
-  .withProps(thread(["children", "text"]))
+  .of("div")
+  .omitProps(headerLevels)
   .withProps(
     concatToClassNameIfAllPropsTrue(
-      r.concat(`${baseClassName}-`),
-      appearance,
+      r.identity,
+      headerLevels,
     )
   )
-  .withProps({ className: baseClassName })
+  .withProps(thread(["children", "text"]))
+  .withProps({ className: "card-title" })
+  .setDisplayName("CardTitle")
   .setPropTypes(propTypes({
     ...createPropTypesBy(
       r.always("bool"),
-      appearance,
-    ),
-    text: "string",
-    children: "node",
-    className: "string",
-    style: "object",
+      headerLevels,
+    ), 
   }))
   .init()

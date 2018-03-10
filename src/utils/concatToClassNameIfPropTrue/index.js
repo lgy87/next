@@ -1,5 +1,7 @@
 import concatToClassNameIf from "utils/concatToClassNameIf"
 
-export default function concatToClassNameIfPropTrue (prop) {
-  return concatToClassNameIf(prop, r.propEq(prop, true))
+function concatToClassNameIfPropTrue (klass, propName, props) {
+  return concatToClassNameIf(klass, r.propEq(propName, true), props)
 }
+
+export default r.curry(concatToClassNameIfPropTrue)

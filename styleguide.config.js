@@ -1,5 +1,6 @@
 const webpack = require("webpack")
 const path = require("path")
+const fs = require("mz/fs")
 
 const PWD = __dirname
 const SRC = `${PWD}/src`
@@ -14,7 +15,7 @@ module.exports = {
     "spectre.css/dist/spectre.min.css",
     "spectre.css/dist/spectre-icons.min.css"
   ],
-  components: "src/components/**/*.jsx",
+  components: "src/components/+(Button|Card)/*.jsx",
   getExampleFilename (componentPath) {
     return componentPath.replace(/\.jsx?$/, ".md")
   },
@@ -58,7 +59,7 @@ module.exports = {
       ],
     },
     context: SRC,
-    devtool: "eval",
+    devtool: "source-map-eval",
     resolve: {
       modules: [
         SRC,
@@ -76,11 +77,13 @@ module.exports = {
     plugins: [
       new webpack.ProvidePlugin({
         React: "react",
-        ReactDOM: "react-dom",
+        ReactDOM: "rect-dom",
         styled: "style-components",
         classnames: "classnames",
         r: "ramda",
         cx: "classnames",
+        rc: "recompose",
+        _: "lodash",
       }),
     ],
     devServer: {
