@@ -1,0 +1,75 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "commonjs": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true,
+      "arrowFunctions": true,
+      "ecmaVersion": 8,
+      "classes": true,
+      "modules": true,
+      "defaultParams": true
+    },
+    "sourceType": "module"
+  },
+  "globals": {
+    "r": true,
+    "cx": true,
+    "describe": true,
+    "it": true,
+    "expect": true,
+    "_": true,
+    "rc": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "flowtype"
+  ],
+  "rules": {
+    "flowtype/require-parameter-type": 2,
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "no-empty": 0,
+    "comma-dangle": 0,
+    "no-unused-vars": 0,
+    "no-console": 0,
+    "no-const-assign": 2,
+    "no-dupe-class-members": 2,
+    "no-duplicate-case": 2,
+    "no-extra-parens": [2, "functions"],
+    "no-self-compare": 2,
+    "accessor-pairs": 2,
+    "comma-spacing": [2, {
+      "before": false,
+      "after": true
+    }],
+    "constructor-super": 2,
+    "new-cap": [2, {
+      "newIsCap": true,
+      "capIsNew": false
+    }],
+    "new-parens": 2,
+    "no-array-constructor": 2,
+    "no-class-assign": 2,
+    "no-cond-assign": 2,
+    "no-multi-spaces": 1,
+    "react/jsx-space-before-closing": 1,
+    "jsx-quotes": 1,
+    "react/jsx-closing-bracket-location": 1,
+    "react/jsx-boolean-value": 1,
+    "react/no-string-refs": 1,
+    "react/self-closing-comp": 1,
+    "react/jsx-no-bind": 1,
+    "react/sort-comp": 1,
+    "react/jsx-pascal-case": 1
+  }
+}
