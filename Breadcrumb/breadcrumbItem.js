@@ -3,7 +3,7 @@ import propTypes from "utils/propTypes"
 
 const BreadcrumbItem = props => (
   <li className="breadcrumb-item">
-    <A { ...props } />  
+    <A {...props} />  
   </li>
 )
 

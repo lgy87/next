@@ -1,4 +1,3 @@
-// @flow
 import component from "utils/component"
 import tooltipMapper from "utils/tooltipMapper"
 import concatToClassNameIfAllPropsTrue from "utils/concatToClassNameIfAllPropsTrue"
@@ -45,4 +44,3 @@ component
     style: "object",
   }))
   .init()
- 

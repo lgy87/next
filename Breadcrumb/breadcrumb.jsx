@@ -8,18 +8,18 @@ export default
 component
   .of("ul")
   .withProps(addStepItems)
-  .withProps({ className: baseClassName })
+  .withProps({className: baseClassName})
   .setDisplayName("Breadcrumb")
   .setPropTypes(propTypes({
     itesm: "array",
   }))
   .init()
 
-function addStepItems ({ items, children, className, style, ...rest }) {
+function addStepItems ({items, children, className, style, ...rest}) {
   if (items?.length) {
     return {
       children: items.map(
-        (item, index) => <BreadcrumbItem { ...item } { ...rest } key={ item.id || index } />
+        (item, index) => <BreadcrumbItem {...item} {...rest} key={item.id || index} />
       ),
     }
   }

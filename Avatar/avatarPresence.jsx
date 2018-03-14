@@ -15,7 +15,7 @@ component
       status,
     )
   )
-  .withProps({ className: "avatar-presence" })
+  .withProps({className: "avatar-presence"})
   .setDisplayName("AvatarPresence")
   .setPropTypes(propTypes({
     ...createPropTypesBy(

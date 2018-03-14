@@ -17,7 +17,7 @@ component
     )
   )
   .withProps(thread(["children", "text"]))
-  .withProps({ className: "card-subtitle" })
+  .withProps({className: "card-subtitle"})
   .setDisplayName("CardSubtitle")
   .setPropTypes(propTypes({
     ...createPropTypesBy(

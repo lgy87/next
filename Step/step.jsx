@@ -6,17 +6,17 @@ export default
 component
   .of("ul")
   .withProps(addStepItems)
-  .withProps({ className: "step" })
+  .withProps({className: "step"})
   .setPropTypes(propTypes({
     steps: "array",
   }))
   .init()
 
-function addStepItems ({ items, children, ...rest }) {
+function addStepItems ({items, children, ...rest}) {
   if (items?.length) {
     return {
       children: items.map(
-        (item, index) => <StepItem { ...item } { ...rest } key={ item.id || index } />
+        (item, index) => <StepItem {...item} {...rest} key={item.id || index} />
       ),
     }
   }

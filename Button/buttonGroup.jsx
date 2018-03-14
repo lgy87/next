@@ -16,7 +16,7 @@ component
       appearance,
     ),
   )
-  .withProps({ className: baseClassName })
+  .withProps({className: baseClassName})
   .setPropTypes(propTypes({
     ...createPropTypesBy(
       r.always("bool"),

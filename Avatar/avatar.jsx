@@ -32,7 +32,7 @@ function Avatar ({
         iconSrc && <img src={iconSrc} className="avatar-icon" alt={iconAlt} />
       }
       {
-        avatarPresenceVisible && <AvatarPresence {...statusObj} /> 
+        avatarPresenceVisible && <AvatarPresence {...statusObj} />
       }
     </figure>
   )
@@ -54,7 +54,7 @@ export default r.pipe(
     ),
   ),
   rc.renameProp("text", "data-initial"),
-  rc.withProps({ "className": baseClassName }),
+  rc.withProps({"className": baseClassName}),
   rc.setDisplayName("Avatar"),
   rc.setPropTypes(propTypes({
     ...createPropTypesBy(

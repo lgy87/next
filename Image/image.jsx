@@ -1,2 +1,2 @@
 export default
-props => <img { ...props } />
+props => <img {...props} />

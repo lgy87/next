@@ -9,7 +9,7 @@ component
   .of("span")
   .withProps(thread(["children", "text"]))
   .renameProp("value", "data-badge")
-  .withProps({ className: baseClassName })
+  .withProps({className: baseClassName})
   .setDisplayName("Badge")
   .setPropTypes(propTypes({
     className: "string",

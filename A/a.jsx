@@ -11,7 +11,7 @@ component
   .withProps(props => r.propEq("target", "_blank", props) && ({
     rel: "noopener noreferrer",
   }))
-  .defaultProps({ href: "javascript:;" })
+  .defaultProps({href: "javascript:;"})
   .setDisplayName("A")
   .setPropTypes(propTypes({
     text: "string",

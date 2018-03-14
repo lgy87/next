@@ -33,8 +33,8 @@ component
       r.has("badge"),
     )
   )
-  .withProps(({ disabled }) => disabled === true && ({tabIndex: -1}))
-  .withProps({ className: baseClassName })
+  .withProps(({disabled}) => disabled === true && ({tabIndex: -1}))
+  .withProps({className: baseClassName})
   .setDisplayName("Button")
   .setPropTypes(propTypes({
     ...createPropTypesBy(

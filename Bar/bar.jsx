@@ -15,17 +15,17 @@ component
       size,
     )
   )
-  .withProps({ className: baseClassName })
+  .withProps({className: baseClassName})
   .setDisplayName("Bar")
   .init()
-  
-  function addItems ({ items, children, ...rest }) {
+
+  function addItems ({items, children, ...rest}) {
     if (items?.length) {
       return {
         children: items.map(
-          (item, index) => <BarItem { ...item } { ...rest } key={ item.id || index } />
+          (item, index) => <BarItem {...item} {...rest} key={item.id || index} />
         ),
       }
     }
   }
-  
+

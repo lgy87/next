@@ -5,6 +5,6 @@ export default function createBlock (name) {
   return component
     .of("div")
     .withProps(thread(["children", "text"]))
-    .withProps({ className: `card-${name}` })
+    .withProps({className: `card-${name}`})
     .init()
 }
