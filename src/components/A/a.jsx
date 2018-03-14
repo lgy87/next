@@ -8,6 +8,9 @@ component
   .of("a")
   .withProps(thread(["children", "text"]))
   .mapProps(tooltipMapper)
+  .withProps(props => r.propEq("target", "_blank", props) && ({
+    rel: "noopener noreferrer",
+  }))
   .defaultProps({ href: "javascript:;" })
   .setDisplayName("A")
   .setPropTypes(propTypes({
