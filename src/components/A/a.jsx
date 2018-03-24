@@ -3,7 +3,7 @@ import propTypes from "utils/propTypes"
 import thread from "utils/thread"
 import tooltipMapper from "utils/tooltipMapper"
 
-const A =
+export default
 component
   .of("a")
   .withProps(thread(["children", "text"]))
@@ -18,5 +18,3 @@ component
     href: "string",
   }))
   .init()
-
-export default A

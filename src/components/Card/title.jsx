@@ -4,8 +4,7 @@ import propTypes from "utils/propTypes"
 import createPropTypesBy from "utils/createPropTypesBy"
 import thread from "utils/thread"
 
-const headerLevels = 
-  r.range(1, 7)
+const headerLevels = r.range(1, 7)
   |> r.map(String)
   |> r.map(r.concat("h"))
 

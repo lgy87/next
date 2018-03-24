@@ -1,5 +1,9 @@
-rc.omitProps = rc.omitProps || r.compose(rc.mapProps, r.omit)
-
+import {compose} from "ramda"
+import omitProps from "utils/omitProps"
+import mandatory from "utils/mandatory"
+import * as rc from "recompose"
+import r from "ramda"
+console.log(rc)
 function createComponent (domType = mandatory(domType)) {
   return r.compose(
     rc.withProps({ component: domType }),
@@ -25,7 +29,8 @@ const base = {
 
 Reflect.setPrototypeOf(component.prototype, new Proxy(base, {
   get (target, key) {
-    if (typeof rc[key] === "function") {
+    console.log(key)
+    if (typeof rc[key] === "function" || key === "omitProps") {
       return new Proxy (rc[key], {
         apply (target, object, args) {
           object.value = target(...args)(object.value)
@@ -37,12 +42,5 @@ Reflect.setPrototypeOf(component.prototype, new Proxy(base, {
     return target[key]
   }
 }))
-
-function mandatory (arg) {
-  throw new Error(`
-    [${arg}] is missing!
-    you can specify ${arg} like "div", "span" etc.
-  `)
-}
 
 export default component
