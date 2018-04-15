@@ -21,8 +21,9 @@
  *   isParent: PropTypes.bool.isRequired,
  * }
  */
-import PropTypes from 'prop-types'
+import r from "ramda"
 import _ from "lodash/fp"
+import PropTypes from 'prop-types'
 import addUnitTestTo_ from "../addUnitTestTo_"
 
 const isRequired = r.invoker(1, "endsWith")(".")

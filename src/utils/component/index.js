@@ -1,46 +1,30 @@
-import {compose} from "ramda"
-import omitProps from "utils/omitProps"
 import mandatory from "utils/mandatory"
-import * as rc from "recompose"
 import r from "ramda"
-console.log(rc)
-function createComponent (domType = mandatory(domType)) {
+import rc from "recompose"
+import concatToClassName from "utils/concatToClassName"
+
+export default {
+  ofTag,
+  ofTagClass: r.curryN(2, ofTagClass),
+}
+
+function ofTag (
+  tag = mandatory("tag"),
+) {
   return r.compose(
-    rc.withProps({ component: domType }),
+    rc.defaultProps({component: tag}),
     rc.componentFromProp,
-  )("component") 
+  )("component")
 }
 
-function component (domType = mandatory(domType)) {
-  if (! new.target) {
-    return new component(domType)
-  }
-
-  this.value = createComponent(domType)
+function ofTagClass (
+  tag = mandatory("tag"),
+  className = mandatory("className"),
+) {
+  return r.compose(
+    rc.withProps(
+      concatToClassName(className),
+    ),
+    ofTag,
+  )(tag)
 }
-
-component.of = component
-
-const base = {
-  init () {
-    return this.value
-  }
-}
-
-Reflect.setPrototypeOf(component.prototype, new Proxy(base, {
-  get (target, key) {
-    console.log(key)
-    if (typeof rc[key] === "function" || key === "omitProps") {
-      return new Proxy (rc[key], {
-        apply (target, object, args) {
-          object.value = target(...args)(object.value)
-          return object
-        }
-      })
-    }
-
-    return target[key]
-  }
-}))
-
-export default component

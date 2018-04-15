@@ -1,17 +1,24 @@
+import r from "ramda"
 import findInBy from "utils/findInBy"
 
 function concatToClassNameIfAllPropsTrue (
   classCreator,
   propNames,
-  { className = "", ...rest }
+  {className, ...rest}
 ) {
   const trutyPropNames = findInBy(r.equals(true), propNames, rest)
   const transformed = r.map(classCreator, trutyPropNames)
+  const classes = r.compose(
+    r.join(" "),
+    r.uniq,
+    r.filter(Boolean),
+    r.prepend(className),
+  )(transformed)
 
   return {
     ...rest,
-    className: r.prepend(className, transformed).join(" "),
-  } 
+    className: classes,
+  }
 }
 
 export default r.curry(concatToClassNameIfAllPropsTrue)

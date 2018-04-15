@@ -1,21 +1,13 @@
+import r from "ramda"
+import rc from "recompose"
 import component from "utils/component"
-import concatToClassNameIfAllPropsTrue from "utils/concatToClassNameIfAllPropsTrue"
-import {concat} from "ramda"
+import concatToClassNameBy from "utils/concatToClassNameBy"
 
-const baseClassName = "loading"
 const size = ["sm", "lg"]
+const concatLoading = r.concat("loading-")
 
 export default
-component
-  .of("div")
-  .omitProps(size)
-  .withProps(
-    concatToClassNameIfAllPropsTrue(
-      concat(`${baseClassName}-`),
-      size,
-    )
-  )
-  .withProps({
-    className: baseClassName,
-  })
-  .init()
+r.compose(
+  rc.withProps(concatToClassNameBy(concatLoading, "size")),
+  component.ofTagClass,
+)("div", "loading")

@@ -9,15 +9,12 @@ const vendors = [
   "react-redux",
   "react-router",
   "redux",
-  "redux-actions",
-  "redux-logger",
 ]
 exports.vendors = vendors
 
 const settings = {
   [modes.dev]: {
     bundle: [
-      "react-hot-loader/patch",
       `${SRC}/entry`,
     ],
   },

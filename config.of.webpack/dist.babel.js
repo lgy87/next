@@ -4,17 +4,19 @@
  * lgy87@foxmail.com
  */
 const webpack = require("webpack")
-const {BUILD, CONFIG} = require("./dirs")
 const webpackMerge = require("webpack-merge")
 const base = require("./base.babel")
 const ChunkManifestPlugin = require("chunk-manifest-webpack-plugin")
 const WebpackChunkHash = require("webpack-chunk-hash")
 const LodashModuleReplacementPlugin = require("lodash-webpack-plugin")
+const {BundleAnalyzerPlugin} = require("webpack-bundle-analyzer")
 
 module.exports = mode => {
   const baseConfig = base(mode)
 
   return webpackMerge(baseConfig, {
+    mode: "production",
+    devtool: "none",
     plugins: [
       new webpack.HashedModuleIdsPlugin(),
       new WebpackChunkHash(),
@@ -22,32 +24,17 @@ module.exports = mode => {
         filename: "chunk-manifest.json",
         manifestVariable: "webpackManifest",
       }),
-      new LodashModuleReplacementPlugin(),
+      new LodashModuleReplacementPlugin({
+        "collections": true,
+        "paths": true,
+      }),
+      new BundleAnalyzerPlugin(),
       /*
        new webpack.optimize.AggressiveSplittingPlugin({
        minSize: 5000,
        maxSize: 10000,
        }),
        */
-      new webpack.optimize.CommonsChunkPlugin({
-        name: [
-          "bundle",
-          "manifest",
-        ],
-        minChunks: Infinity,
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        beautify: false,
-        compress: {
-          screw_ie8: true,
-        },
-        mangle: {
-          screw_ie8: true,
-          keep_fnames: true,
-        },
-        comments: false,
-      }),
       /*
       new ExtractTextPlugin({
         filename: "bundle.css",

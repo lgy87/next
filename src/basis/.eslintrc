@@ -27,6 +27,11 @@
     "_": true,
     "rc": true
   },
+  "settings": {
+    "flowtype": {
+      "onlyFilesWithFlowAnnotation": true
+    }
+  },
   "parser": "babel-eslint",
   "plugins": [
     "react",

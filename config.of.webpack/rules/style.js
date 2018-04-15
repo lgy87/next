@@ -3,7 +3,7 @@
  * 2017/03/10
  * lgy87@foxmail.com
  */
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+//const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 const modes = require("../modes")
 const {defaultMode} = require("../settings")
@@ -18,12 +18,14 @@ const cssOptionProd = {
   importLoaders: 1,
 }
 */
+  /*
 const cssUseProd = ExtractTextPlugin.extract({
   fallback: "style-loader",
   use: [
     "css-loader",
   ],
 })
+*/
 const settings = {
   development: [
     {
@@ -37,7 +39,11 @@ const settings = {
   production: [
     {
       test: /\.css$/,
-      use: cssUseProd,
+      //      use: cssUseProd,
+      use: [
+        "style-loader",
+        "css-loader",
+      ],
     },
   ],
 }

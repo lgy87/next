@@ -1,8 +1,5 @@
+import rc from "recompose"
 import createFormElement from "../createFormElement"
-import {
-  withProps,
-} from "recompose"
-import {pipe} from "ramda"
 import Option from "./option"
 
 const behavior = ["multiple"]
@@ -12,7 +9,7 @@ const Select = createFormElement({
 })
 
 export default
-withProps(addOptions)(Select)
+rc.withProps(addOptions)(Select)
 
 function addOptions ({options: items, children, ...rest}) {
   if (items?.length) {

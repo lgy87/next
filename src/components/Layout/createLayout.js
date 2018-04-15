@@ -1,11 +1,10 @@
+/*
+ * Guangyao Li
+ * 2018/03/25
+ * lgy87@foxmail.com
+ */
+import r from "ramda"
 import component from "utils/component"
-import concatToClassName from "utils/concatToClassName"
-import {T} from "ramda"
 
 export default
-function createLayout (name) {
-  return component
-    .of("div")
-    .withProps(concatToClassName(name))
-    .init()
-}
+component.ofTagClass("div")

@@ -10,5 +10,3 @@ createFormElement({
   tag: "input",
   type: "text",
 })
-
-

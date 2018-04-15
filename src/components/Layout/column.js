@@ -3,48 +3,35 @@
  * 2018/03/21
  * lgy87@foxmail.com
  */
-import component from "utils/component"
 import createLayout from "./createLayout"
 import concatToClassNameIfAllPropsTrue from "utils/concatToClassNameIfAllPropsTrue"
 import cx from "classnames"
 import size from "enums/size"
-import {
-  concat,
-  pipe,
-  identity,
-  map,
-  range,
-  xprod,
-  join,
-} from "ramda"
+import r from "ramda"
+import omitProps from "utils/omitProps"
+import rc from "recompose"
 
-const baseClassName = "column"
-const oneToTwelve = range(1, 13).map(String)
-const appearance = xprod(size, oneToTwelve).map(join("-"))
+const oneToTwelve = r.range(1, 13).map(String)
+const appearance = r.xprod(size, oneToTwelve).map(r.join("-"))
 const margins = ["mx-auto", "ml-auto", "mr-auto"]
-const fullAppearance = appearance.concat(oneToTwelve, margins).map(concat("col-"))
+const fullAppearance = appearance.concat(oneToTwelve, margins).map(r.concat("col-"))
+
+const Column = createLayout("column")
 
 export default
-component
-  .of("div")
-  .omitProps(appearance.concat(fullAppearance, margins))
-  .withProps(
+r.pipe(
+  omitProps(appearance.concat(fullAppearance, margins)),
+  rc.withProps(
     concatToClassNameIfAllPropsTrue(
-      concat("col-"),
+      r.concat("col-"),
       appearance.concat(margins),
     )
-  )
-  .withProps(
+  ),
+  rc.withProps(
     concatToClassNameIfAllPropsTrue(
-      identity,
+      r.identity,
       fullAppearance,
     )
-  )
-  .withProps(({className}) => ({
-    className: cx(
-      baseClassName,
-      className,
-    ),
-  }))
-  .setDisplayName("Column")
-  .init()
+  ),
+  rc.setDisplayName("Column"),
+)(Column)

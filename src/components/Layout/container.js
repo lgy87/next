@@ -3,26 +3,21 @@
  * 2018/03/20
  * lgy87@foxmail.com
  */
-import createLayout from "./createLayout"
-import {pipe, concat, omit} from "ramda"
-import {
-  mapProps,
-  withProps,
-} from "recompose"
-import concatToClassNameIfAllPropsTrue from "utils/concatToClassNameIfAllPropsTrue"
+import r from "ramda"
+import rc from "recompose"
 import size from "enums/size"
+import omitProps from "utils/omitProps"
+import createLayout from "./createLayout"
+import concatToClassNameIfAllPropsTrue from "utils/concatToClassNameIfAllPropsTrue"
 
-const baseClassName = "grid"
 const Container = createLayout("container")
 
-const omitProps = pipe(omit, mapProps)
-
 export default
-pipe(
+r.pipe(
   omitProps(size),
-  withProps(
+  rc.withProps(
     concatToClassNameIfAllPropsTrue(
-      concat(`${baseClassName}-`),
+      r.concat("grid-"),
       size,
     )
   ),

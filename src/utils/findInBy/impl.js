@@ -18,6 +18,7 @@
  *
  * => baz
  */
+import r from "ramda"
 
 function findInBy (pred, keysToFindIn, object) {
   return r.compose(

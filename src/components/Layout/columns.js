@@ -3,26 +3,23 @@
  * 2018/03/20
  * lgy87@foxmail.com
  */
+import r from "ramda"
+import rc from "recompose"
+import omitProps from "utils/omitProps"
 import createLayout from "./createLayout"
 import concatToClassNameIfAllPropsTrue from "utils/concatToClassNameIfAllPropsTrue"
-import {
-  concat,
-} from "ramda"
 
 const Columns = createLayout("columns")
-
 const appearance = ["gapless", "oneline"]
-const baseClassName = "col"
 
 export default
-r.compose(
-  rc.omitProps(appearance),
+r.pipe(
+  omitProps(appearance),
   rc.withProps(
     concatToClassNameIfAllPropsTrue(
-      concat(`${baseClassName}-`),
+      r.concat("col-"),
       appearance,
     )
   ),
   rc.setDisplayName("Columns"),
 )(Columns)
-

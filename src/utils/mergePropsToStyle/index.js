@@ -1,5 +1,5 @@
 function mergePropsToStyle (propNames, props) {
-  const { style } = props
+  const {style} = props
   const picked = r.pick(propNames, props)
 
   return {

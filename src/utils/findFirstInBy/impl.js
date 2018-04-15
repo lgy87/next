@@ -18,6 +18,7 @@
  *
  * => baz
  */
+import r from "ramda"
 import findInBy from "utils/findInBy"
 
 function findFirstInBy (pred, keysToFindIn, object) {
@@ -27,4 +28,5 @@ function findFirstInBy (pred, keysToFindIn, object) {
   )(object)
 }
 
-export default r.curry(findFirstInBy)
+export default
+r.curry(findFirstInBy)

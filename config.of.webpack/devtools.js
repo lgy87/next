@@ -8,7 +8,7 @@ const {defaultMode} = require("./settings")
 const r = require("ramda")
 
 const settings = {
-  [modes.dev] : "eval",
+  [modes.dev] : "source-map-eval",
   [modes.prod]: "eval",
 }
 

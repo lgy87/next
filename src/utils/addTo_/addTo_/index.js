@@ -10,9 +10,12 @@
  * foo: {bar: 42}    // this function MUTATES the object
  * bar: {bar: 42}
  */
+import r from "ramda"
+
 function addTo_(key, value, object) {
   object[key] = value
   return object
 }
 
-export default r.curry(addTo_)
+export default
+r.curry(addTo_)

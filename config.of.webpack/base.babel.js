@@ -63,10 +63,9 @@ module.exports = mode => ({
     new webpack.ProvidePlugin({
       React: "react",
       ReactDOM: "react-dom",
-      _: "lodash/fp",
       $: "jquery",
       styled: "style-components",
-      classnames: "classnames",
+      cx: "classnames",
     }),
   ],
 })

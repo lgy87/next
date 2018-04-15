@@ -79,7 +79,6 @@ module.exports = {
         React: "react",
         ReactDOM: "rect-dom",
         styled: "style-components",
-        classnames: "classnames",
         r: "ramda",
         cx: "classnames",
         rc: "recompose",

@@ -21,6 +21,7 @@
  *   isParent: PropTypes.bool.isRequired,
  * }
  */
+import r from "ramda"
 import PropTypes from 'prop-types'
 import _ from "lodash/fp"
 import addUnitTestTo_ from "../addUnitTestTo_"

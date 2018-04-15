@@ -4,7 +4,7 @@
  * lgy87@foxmail.com
  */
 const modes = require("./modes")
-const { defaultMode } = require("./settings")
+const {defaultMode} = require("./settings")
 const r = require("ramda")
 
 const settings = {
